@@ -22,7 +22,7 @@ def home():
         result = single_integer in comma_integers_list
 
         # Sort and store comma_integers_list in the database
-        sorted_comma_integers = sorted(comma_integers_list)
+        sorted_comma_integers = sorted(comma_integers_list, reverse=True)
         db.store_comma_integers(user_id=session.get('user_id'), input_value=','.join(map(str, sorted_comma_integers)))
 
         success_message = "Data stored successfully."

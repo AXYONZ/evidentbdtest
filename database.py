@@ -31,7 +31,7 @@ class Database:
 
     def get_input_values_by_time_range(self, start_datetime, end_datetime, user_id):
         query = """
-            SELECT timestamp, input_value
+            SELECT time_stamp, input_value
             FROM khoj
             WHERE user_id = %s AND time_stamp BETWEEN %s AND %s
         """
@@ -40,9 +40,9 @@ class Database:
 
         input_values_data = []
         for row in results:
-            timestamp, input_value = row
+            time_stamp, input_value = row
             input_values_data.append({
-                "timestamp": timestamp.strftime('%Y-%m-%d %H:%M:%S'),
+                "timestamp": time_stamp.strftime('%Y-%m-%d %H:%M:%S'),
                 "input_values": input_value
             })
 
